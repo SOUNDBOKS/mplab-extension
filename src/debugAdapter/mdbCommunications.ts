@@ -371,11 +371,9 @@ export class MDBCommunications extends EventEmitter {
 
 		let confs = project.configurationDescriptor.confs;
 
-		let conf = confs.find(c => c.conf[0].$.name === configuration);
+		let conf = confs[0].conf.find(config => config.$.name === configuration);
 
-		if (conf) {
-			conf = conf.conf[0];
-		} else {
+		if (!conf) {
 			throw Error(`Failure to find a "${configuration}" configuration in ${project}`);
 		}
 
